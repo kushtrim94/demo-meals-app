@@ -42,7 +42,7 @@ const AvailableMeals = () => {
   if (isLoading) {
     return (
       <section className={classes.MealsLoading}>
-        <p>Loading..</p>
+        <p>Loading...</p>
       </section>
     );
   }
