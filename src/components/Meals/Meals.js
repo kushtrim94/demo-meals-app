@@ -1,14 +1,24 @@
-import { Fragment } from 'react';
-
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MealsSummary from './MealsSummary';
-import AvailableMeals from './AvailableMeals';
+import classes from './Meals.module.css';
 
 const Meals = () => {
+  const navigate = useNavigate();
+
+  const handleMenuClick = () => {
+    navigate('/menu');
+  };
+
   return (
-    <Fragment>
+    <div>
       <MealsSummary />
-      <AvailableMeals />
-    </Fragment>
+      <div className={classes.buttonContainer}>
+        <button className={classes.menuButton} onClick={handleMenuClick}>
+          Look our menu
+        </button>
+      </div>
+    </div>
   );
 };
 
