@@ -1,10 +1,10 @@
 import { useState } from 'react';
-
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Layout/Header';
-import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
+import Meals from './components/Meals/Meals';
+import AvailableMeals from './components/Meals/AvailableMeals';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -21,9 +21,14 @@ function App() {
     <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Meals />} />
+          <Route path='/menu' element={<AvailableMeals />} />
+          {/* You can add more routes here */}
+        </Routes>
+      </BrowserRouter>
     </CartProvider>
   );
 }
